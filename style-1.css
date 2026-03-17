@@ -1,3 +1,123 @@
 body {
   background-color: #dfecff;
 }
+
+.neon-sign {
+  font-family: 'Monoton', 'cursive';
+  color: #fff;
+  font-size: 3vh;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #9D00FF, 0 0 30px #9D00FF, 0 0 40px #9D00FF, 0 0 55px #9D00FF, 0 0 75px #9D00FF;
+}
+
+body {
+  color: #eee;
+  background-color: #111;
+  font-family: Arial, serif;
+}
+
+.site-name {
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  text-align: center;
+  top: 5%;
+}
+
+.spacer-top {
+  margin-top: 200px;
+}
+
+.arcade-overlay-tall {
+  background-size: cover ;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  height: 100vh;
+  width: fit-content;
+  margin: auto;
+  display: block;
+}
+
+.arcade-overlay {
+  display: none;
+}
+
+.screen {
+  width: 30vh;
+  height: 60vh;
+  margin: 20vh auto 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+@media screen and (max-aspect-ratio: 1/2) {
+  .neon-sign {
+    font-size: 6vw;
+  }
+
+  .arcade-overlay-tall {
+    background-size: cover ;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+    display: block;
+  }
+
+  .screen {
+    width: 65vw;
+    height: 60vh;
+    margin: 20vh auto 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (min-aspect-ratio: 1/1) {
+  .neon-sign {
+    font-size: 6vh;
+  }
+
+  .site-name {
+    top: 7%;
+  }
+
+  .arcade-overlay {
+    background-size: cover ;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    height: 100vh;
+    width: fit-content;
+    margin: auto;
+    display: block;
+  }
+
+  .screen {
+    width: 60vh;
+    height: 38vh;
+    margin: 32vh auto 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .arcade-overlay-tall {
+    display: none;
+  }
+}
