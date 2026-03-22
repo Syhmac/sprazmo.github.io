@@ -46,16 +46,113 @@ body {
 }
 
 .screen {
-  width: 30vh;
+  width: 32vh;
+  padding: 0 4px;
   height: 60vh;
   margin: 20vh auto 0;
   overflow-y: auto;
   overflow-x: hidden;
+
+  --screen-scrollbar-size: 4px;
+  --screen-scrollbar-track: rgba(255, 255, 255, 0.08);
+  --screen-scrollbar-thumb: #9d00ff;
+  --screen-scrollbar-thumb-hover: #b43dff;
+  --screen-scrollbar-radius: 999px;
+
+  /*!* Firefox *!*/
+  /*scrollbar-width: var(--screen-scrollbar-size);*/
+  /*scrollbar-color: var(--screen-scrollbar-thumb) var(--screen-scrollbar-track);*/
+}
+
+/* Chrome, Edge, Safari */
+.screen::-webkit-scrollbar {
+  width: var(--screen-scrollbar-size);
+}
+
+.screen::-webkit-scrollbar-track {
+  background: var(--screen-scrollbar-track);
+  border-radius: var(--screen-scrollbar-radius);
+}
+
+.screen::-webkit-scrollbar-thumb {
+  background: var(--screen-scrollbar-thumb);
+  border-radius: var(--screen-scrollbar-radius);
+}
+
+.screen::-webkit-scrollbar-thumb:hover {
+  background: var(--screen-scrollbar-thumb-hover);
 }
 
 img {
   display: block;
   width: 100%;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  border-bottom: #333 2px solid;
+  padding-bottom: 6px;
+  font-family: "Bungee", sans-serif;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+p, li {
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+li {
+  font-size: 1.2em;
+}
+
+aside {
+  width: 100%;
+  border-top: #333 2px solid;
+  border-bottom: #333333 2px solid;
+}
+
+.aside_option {
+  display: block;
+  width: 100%;
+  border: none;
+  background: none;
+  font-family: "Bungee", sans-serif;
+  color: #eeeeee;
+  font-size: 1.25em;
+  padding: 12px 0;
+  border-bottom: #555 1px solid;
+}
+
+.aside_option:last-child {
+  border-bottom: none;
+}
+
+.aside_option:hover {
+  background-color: #222;
+}
+
+.aside_option:active {
+  background-color: #333;
+}
+
+footer {
+  text-align: center;
+  font-weight: bold;
+}
+
+ul {
+  list-style: square;
 }
 
 @media screen and (max-aspect-ratio: 1/2) {
@@ -110,7 +207,8 @@ img {
   }
 
   .screen {
-    width: 60vh;
+    width: 62vh;
+    padding: 0 4px;
     height: 38vh;
     margin: 32vh auto 0;
     overflow-y: auto;
@@ -119,5 +217,17 @@ img {
 
   .arcade-overlay-tall {
     display: none;
+  }
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  h3 {
+    font-size: 1.5em;
   }
 }
