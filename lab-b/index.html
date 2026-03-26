@@ -3,12 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Imie Nazwisko (00000) - PTW LAB B</title>
+    <title>Samuel Praźmo (57931) - PTW LAB B</title>
 
+    <link rel="stylesheet" href="normalize.css" type="text/css">
     <link rel="stylesheet" href="styles.css" type="text/css">
     <script src="scripts.js" defer></script>
+    <script src="https://kit.fontawesome.com/323855ccfa.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    <main>
+        <div id="searchBox">
+            <input type="text" id="search"><i class="fa-solid fa-magnifying-glass searchIcon"></i>
+        </div>
+        <div id="toDoList">
+            <div class="listItem">
+                <span class="itemName">Szablon Zadania</span>
+                <span class="itemDate">00-00-0000</span>
+                <button onclick="" class="itemDeleteButton"><i class="fa-solid fa-trash-can itemDelete"></i></button>
+            </div>
+            <div class="listItem">
+                <span class="itemName">Szablon Zadania 2</span>
+                <span class="itemDate">00-00-0000</span>
+                <button onclick="" class="itemDeleteButton"><i class="fa-solid fa-trash-can itemDelete"></i></button>
+            </div>
+        </div>
+        <form id="itemCreator">
+            <input type="text" id="newItemName">
+            <input type="date" id="newItemDate">
+            <input type="submit" id="newItemSubmit" value="Add">
+        </form>
+    </main>
 </body>
 </html>
