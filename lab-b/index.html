@@ -20,21 +20,12 @@
             <input type="text" id="search"><i class="fa-solid fa-magnifying-glass searchIcon"></i>
         </div>
         <div id="toDoList">
-            <div class="listItem">
-                <span class="itemName">Szablon Zadania</span>
-                <span class="itemDate">00-00-0000</span>
-                <button onclick="" class="itemDeleteButton"><i class="fa-solid fa-trash-can itemDelete"></i></button>
-            </div>
-            <div class="listItem">
-                <span class="itemName">Szablon Zadania 2</span>
-                <span class="itemDate">00-00-0000</span>
-                <button onclick="" class="itemDeleteButton"><i class="fa-solid fa-trash-can itemDelete"></i></button>
-            </div>
+            <!-- Task land here -->
         </div>
         <form id="itemCreator">
             <input type="text" id="newItemName">
             <input type="date" id="newItemDate">
-            <input type="submit" id="newItemSubmit" value="Add">
+            <input type="button" id="newItemSubmit" value="Add" onclick="add()">
         </form>
     </main>
 </body>

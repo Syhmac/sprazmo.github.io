@@ -45,6 +45,9 @@ main {
 #toDoList {
     border-top: black 1px solid;
     border-bottom: black 1px solid;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.2s ease-in-out;
 }
 
 .listItem {
