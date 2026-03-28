@@ -73,7 +73,7 @@ class TaskList {
             taskObject.appendChild(taskDelete);
             toDoList.appendChild(taskObject);
         }
-        resizeList(toDoList);
+        resizeList();
     }
     addTask(name, dueTo = "") {
         let uuid = crypto.randomUUID()
@@ -91,8 +91,13 @@ class TaskList {
     }
 }
 
-function resizeList(listEl) {
-    listEl.style.maxHeight = listEl.scrollHeight + 'px';
+function resizeList() {
+    let list = document.getElementById("toDoList");
+    let height = 0;
+    for (let children of list.children) {
+        height += children.scrollHeight;
+    }
+    list.style.height = height + 'px';
 }
 
 // let crypto = new Crypto();
