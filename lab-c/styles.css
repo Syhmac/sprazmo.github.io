@@ -12,12 +12,12 @@ body {
   container-type: inline-size;
 }
 
-.map, .puzzleBox {
+#map, #puzzleBox {
   width: 100%;
   border: 2px black solid;
   min-height: 60cqw;
 }
 
-.btnWrapper, .puzzles {
+#btnWrapper, #puzzles {
   margin-top: 10px;
 }
