@@ -1,3 +1,23 @@
 body {
   background-color: #e6f1fc;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+}
+
+.colLeft, .colRight {
+  display: flex;
+  flex-direction: column;
+  container-type: inline-size;
+}
+
+.map, .puzzleBox {
+  width: 100%;
+  border: 2px black solid;
+  min-height: 60cqw;
+}
+
+.btnWrapper, .puzzles {
+  margin-top: 10px;
 }
