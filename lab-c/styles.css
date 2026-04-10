@@ -12,10 +12,16 @@ body {
   container-type: inline-size;
 }
 
-#map, #puzzleBox {
+#map {
   width: 100%;
   border: 2px black solid;
   min-height: 60cqw;
+}
+
+#puzzleBox {
+  width: 100%;
+  border: 2px black solid;
+  height: 60cqw;
 }
 
 #btnWrapper, #puzzles {
