@@ -27,3 +27,14 @@ body {
 #btnWrapper, #puzzles {
   margin-top: 10px;
 }
+
+#puzzles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.puzzle {
+  height: calc(60cqw / 4);
+  width: calc(100% / 4);
+  margin: 0;
+}
