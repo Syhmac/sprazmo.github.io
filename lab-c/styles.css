@@ -1,6 +1,7 @@
 body {
   background-color: #e6f1fc;
   display: grid;
+  grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   padding: 20px;

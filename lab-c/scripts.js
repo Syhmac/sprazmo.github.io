@@ -34,13 +34,22 @@ document.getElementById("export").addEventListener("click", () => {
         puzzle.classList.add("puzzle");
         puzzle.width = puzzleWidth;
         puzzle.height = puzzleHeight;
-        puzzle.setAttribute("puzzleID", puzzleIdx++)
+        puzzle.setAttribute("puzzleID", puzzleIdx++);
+        puzzle.draggable = true;
         // Add puzzle to array
         puzzles.push(puzzle);
         // Draw puzzle piece
         let ctx = puzzle.getContext("2d");
         ctx.drawImage(rastMap, j * puzzleWidth, i * puzzleHeight, puzzleWidth, puzzleHeight, 0, 0, puzzleWidth, puzzleHeight);
-        // TODO: Add drag-and-drop functionality
+        // Add drag-and-drop functionality
+        puzzle.addEventListener("dragstart", (e) => {
+          puzzle.style.border = "2px dotted red";
+          e.dataTransfer.setData("text/plain", puzzle.getAttribute("puzzleID"));
+        })
+
+        puzzle.addEventListener("dragend", (e) => {
+          puzzle.style.border = "none";
+        })
       }
     }
 
@@ -67,4 +76,25 @@ document.getElementById("myLocation").addEventListener("click", () => {
   }, {
     enableHighAccuracy: true,
   })
+})
+
+// Drag-and-drop functionality for puzzle box
+let puzzlesBox = document.getElementById("puzzles");
+puzzlesBox.addEventListener("dragenter", (e) => {
+  puzzlesBox.style.border = "2px dotted green";
+})
+
+puzzlesBox.addEventListener("dragleave", (e) => {
+  puzzlesBox.style.border = "none";
+})
+
+puzzlesBox.addEventListener("dragover", (e) => {
+  e.preventDefault();
+})
+
+puzzlesBox.addEventListener("drop", (e) => {
+  let puzzleID = e.dataTransfer.getData("text/plain");
+  let puzzle = document.querySelector(`.puzzle[puzzleID="${puzzleID}"]`);
+  puzzlesBox.appendChild(puzzle);
+  puzzlesBox.style.border = "none";
 })
