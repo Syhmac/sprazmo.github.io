@@ -1,41 +1,85 @@
 body {
-  background-color: #e6f1fc;
+  background-color: #2a223e;
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "leftUp rightUp"
+                       "leftDown rightDown";
   grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr 1fr;
   gap: 20px;
   padding: 20px;
+  max-height: 1vh;
 }
 
-.colLeft, .colRight {
+.leftUp, .rightUp {
   display: flex;
   flex-direction: column;
-  container-type: inline-size;
 }
 
-#map {
+.leftUp {
+  grid-area: leftUp;
+}
+
+.rightUp {
+  grid-area: rightUp;
+}
+
+.leftDown {
+  grid-area: leftDown;
+}
+
+.rightDown {
+  grid-area: rightDown;
+}
+
+#map, #puzzleBox {
   width: 100%;
-  border: 2px black solid;
-  min-height: 60cqw;
+  border: 2px white solid;
+  height: 40vh;
 }
 
-#puzzleBox {
-  width: 100%;
-  border: 2px black solid;
-  height: 60cqw;
-}
-
-#btnWrapper, #puzzles {
+#btnWrapper {
   margin-top: 10px;
 }
 
-#puzzles {
-  display: flex;
+button {
+  border: none;
+  background-color: #9d00ff;
+  color: white;
+  font-family: Arial, serif;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+button:hover {
+  background-color: #af34ff;
+}
+
+button:active {
+  background-color: #5c0092;
+}
+
+#puzzles, .puzzleFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 1fr 1fr 1fr 1fr;
   flex-wrap: wrap;
+  max-height: 40vh;
+  margin: 0
 }
 
 .puzzle {
-  height: calc(60cqw / 4);
-  width: calc(100% / 4);
+  height: calc(40vh / 4);
+  width: 100%;
   margin: 0;
+  box-sizing: border-box;
+}
+
+.puzzleFields {
+  background-color: #4c4056;
+}
+
+.puzzleField {
+  height: calc(40vh / 4);
+  display: none;
+  box-sizing: border-box;
 }

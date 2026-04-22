@@ -12,6 +12,21 @@ function shuffle(array) {
   }
 }
 
+function validateFields(puzzleFields) {
+  let correct = 0
+  for (let puzzleField of puzzleFields) {
+    let child = puzzleField.childNodes.length > 0 ? puzzleField.childNodes[0] : null;
+    if (child != null) {
+      if (child.getAttribute("puzzleID") === puzzleField.getAttribute("fieldID")) {
+        correct++;
+      }
+    }
+  }
+  if (correct === 16) {
+    alert("Congratulations! You solved the puzzle!");
+  }
+}
+
 document.getElementById("export").addEventListener("click", () => {
   leafletImage(map, (err, canvas) => {
     let rastMap = document.getElementById("puzzleBox");
@@ -19,7 +34,6 @@ document.getElementById("export").addEventListener("click", () => {
 
     const puzzleHeight = rastMap.height / 4;
     const puzzleWidth = rastMap.width / 4;
-    const puzzleImage = canvas.toDataURL("image/png");
     let puzzles = [];
     let puzzlesBox = document.getElementById("puzzles");
 
@@ -43,14 +57,21 @@ document.getElementById("export").addEventListener("click", () => {
         ctx.drawImage(rastMap, j * puzzleWidth, i * puzzleHeight, puzzleWidth, puzzleHeight, 0, 0, puzzleWidth, puzzleHeight);
         // Add drag-and-drop functionality
         puzzle.addEventListener("dragstart", (e) => {
-          puzzle.style.border = "2px dotted red";
+          puzzle.style.border = "1px dotted red";
           e.dataTransfer.setData("text/plain", puzzle.getAttribute("puzzleID"));
         })
 
-        puzzle.addEventListener("dragend", (e) => {
+        puzzle.addEventListener("dragend", (_e) => {
           puzzle.style.border = "none";
         })
       }
+    }
+
+    // Clear content of puzzlesBox
+    let maxI = puzzlesBox.children.length // Need to take the length once
+    for (let i = 0; i < maxI; i++) {
+      let child = puzzlesBox.children[0]
+      child.remove()
     }
 
     shuffle(puzzles);
@@ -59,6 +80,15 @@ document.getElementById("export").addEventListener("click", () => {
       puzzlesBox.appendChild(puzzle);
     }
 
+    let puzzleFields = document.querySelectorAll(".puzzleField");
+
+    for (let puzzleField of puzzleFields) {
+      puzzleField.style.display = "block"
+      if (puzzleField.children.length > 0) {
+        let child = puzzleField.children[0]
+        child.remove()
+      }
+    }
   })
 })
 
@@ -80,14 +110,6 @@ document.getElementById("myLocation").addEventListener("click", () => {
 
 // Drag-and-drop functionality for puzzle box
 let puzzlesBox = document.getElementById("puzzles");
-puzzlesBox.addEventListener("dragenter", (e) => {
-  puzzlesBox.style.border = "2px dotted green";
-})
-
-puzzlesBox.addEventListener("dragleave", (e) => {
-  puzzlesBox.style.border = "none";
-})
-
 puzzlesBox.addEventListener("dragover", (e) => {
   e.preventDefault();
 })
@@ -96,5 +118,33 @@ puzzlesBox.addEventListener("drop", (e) => {
   let puzzleID = e.dataTransfer.getData("text/plain");
   let puzzle = document.querySelector(`.puzzle[puzzleID="${puzzleID}"]`);
   puzzlesBox.appendChild(puzzle);
-  puzzlesBox.style.border = "none";
 })
+
+let puzzleFields = document.querySelectorAll(".puzzleField");
+let fieldID = 1
+
+for (let puzzleField of puzzleFields) {
+  puzzleField.setAttribute("fieldID", fieldID++);
+
+  puzzleField.addEventListener("dragenter", (_e) => {
+    puzzleField.style.backgroundColor = "#a06fe1";
+  })
+
+  puzzleField.addEventListener("dragleave", (_e) => {
+    puzzleField.style.backgroundColor = "transparent";
+  })
+
+  puzzleField.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  })
+
+  puzzleField.addEventListener("drop", (e) => {
+    let puzzleID = e.dataTransfer.getData("text/plain");
+    let puzzle = document.querySelector(`.puzzle[puzzleID="${puzzleID}"]`);
+    if (puzzleField.children.length < 1) {
+      puzzleField.appendChild(puzzle);
+    }
+    puzzleField.style.backgroundColor = "transparent";
+    validateFields(puzzleFields);
+  })
+}
