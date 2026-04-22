@@ -58,6 +58,10 @@ button:active {
   background-color: #5c0092;
 }
 
+#puzzles {
+  min-height: 10vh;
+}
+
 #puzzles, .puzzleFields {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

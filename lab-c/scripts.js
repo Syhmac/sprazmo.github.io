@@ -23,7 +23,31 @@ function validateFields(puzzleFields) {
     }
   }
   if (correct === 16) {
-    alert("Congratulations! You solved the puzzle!");
+    winNotification()
+  }
+}
+
+function winNotification() {
+  console.log("a")
+  if (!("Notification" in window)) {
+    console.log("not")
+    console.error("Notifications are not supported by this browser");
+    return
+  }
+  if (Notification.permission === "granted") {
+    console.log("b")
+    const notification = new Notification("Wygrałeś!")
+    return
+  }
+  if (Notification.permission === "default") {
+    console.log("c")
+    Notification.requestPermission().then((permission) => {
+      console.log("d")
+      if (Notification.permission === "granted") {
+        console.log("e")
+        const notification = new Notification("Wygrałeś!")
+      }
+    })
   }
 }
 
