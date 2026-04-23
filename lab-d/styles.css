@@ -1,3 +1,30 @@
 body {
   background-color: #e6f1fc;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 9fr;
+  grid-template-areas: "search forecast"
+                       "current forecast";
+  gap: 10px;
+  height: 100vh;
+  margin: 0;
+  background-image: url("assets/sunny.webp");
+  background-size: cover;
+  background-position: center;
+}
+
+#search {
+  grid-area: search;
+}
+
+#currentWeather {
+  grid-area: current;
+}
+
+#forecastWeather {
+  grid-area: forecast;
+}
+
+#attributions {
+  display: none;
 }
