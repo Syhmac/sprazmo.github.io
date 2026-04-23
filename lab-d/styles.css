@@ -19,6 +19,33 @@ body {
 
 #currentWeather {
   grid-area: current;
+  display: grid;
+  grid-template-areas:
+    "currLocation currLocation"
+    "currTemp currFeels"
+    "currPress currPress"
+    "currWind currWind";
+/* TODO: Make the layout stick to the bottom */
+}
+
+#currentLocation {
+  grid-area: currLocation;
+}
+
+#currentTemperature {
+  grid-area: currTemp;
+}
+
+#currentFeelsLike {
+  grid-area: currFeels;
+}
+
+#currentPressure {
+  grid-area: currPress;
+}
+
+#currentWind {
+  grid-area: currWind;
 }
 
 #forecastWeather {

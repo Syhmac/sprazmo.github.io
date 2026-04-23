@@ -6,6 +6,7 @@
     <title>Samuel Praźmo (57931) - PTW LAB D</title>
 
     <link rel="stylesheet" href="styles.css" type="text/css">
+    <script src="https://kit.fontawesome.com/323855ccfa.js" crossorigin="anonymous"></script>
     <script src="scripts.js" defer></script>
 </head>
 <body>
@@ -18,8 +19,14 @@
         <div id="currentTemperature">14°C</div>
         <div id="currentFeelsLike">11°C</div>
         <div id="currentStatus">Sunny</div>
-        <div id="currentPressure">1013 hPa</div>
-        <div id="currentWindSpeed">7.2 m/s</div>
+        <div id="currentPressure">
+            <span id="currentPresureIcon"><i class="fa-solid fa-gauge"></i></span>
+            <span id="currentPressureText">1013 hPa</span>
+        </div>
+        <div id="currentWind">
+            <span id="currentWindDirection"><i class="fa-regular fa-circle-up"></i></span>
+            <span id="currentWindText">7.2 m/s</span>
+        </div>
     </div>
     <div id="forecastWeather">
         Forecast
