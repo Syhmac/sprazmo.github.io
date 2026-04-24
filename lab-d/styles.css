@@ -1,7 +1,7 @@
 body {
   background-color: #e6f1fc;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 9fr;
   grid-template-areas: "search forecast"
                        "current forecast";
@@ -13,27 +13,78 @@ body {
   background-position: center;
 }
 
+:root {
+  --widget-color-day: rgb(86 160 255 / 0.47)
+}
+
 #search {
   grid-area: search;
+  margin-top: 16px;
+  margin-left: 16px;
+  display: flex;
+  height: fit-content;
+}
+
+#searchBar {
+  padding: 6px;
+  border-radius: 12px;
+  border: black 2px solid;
+  width: 100%;
+  margin-right: 8px;
+  height: 24px;
+}
+
+#searchButton {
+  padding: 8px;
+  border-radius: 9999px;
+  border: black 2px solid;
+  font-weight: bold;
+  background-color: #60bcdf;
+}
+
+#searchButton:hover {
+  background-color: #93d5ef;
+}
+
+#searchButton:active {
+  background-color: #2884a6;
 }
 
 #currentWeather {
   grid-area: current;
   display: grid;
   grid-template-areas:
-    "currLocation currLocation"
-    "currTemp currFeels"
-    "currPress currPress"
-    "currWind currWind";
-/* TODO: Make the layout stick to the bottom */
+    "currLocation"
+    "currStatus"
+    "currTemp"
+    "currPress"
+    "currWind";
+  gap: 8px;
+  height: fit-content;
+  align-self: end;
+  margin-bottom: 16px;
+  margin-left: 16px;
+  background-color: var(--widget-color-day);
+  padding: 16px;
+  color: white;
+  border-radius: 24px;
+  font-family: Arial, serif;
 }
 
 #currentLocation {
   grid-area: currLocation;
 }
 
+#currentStatus {
+  grid-area: currStatus;
+}
+
 #currentTemperature {
   grid-area: currTemp;
+}
+
+#currentTemperatureValue {
+  font-size: 64px;
 }
 
 #currentFeelsLike {
@@ -50,6 +101,49 @@ body {
 
 #forecastWeather {
   grid-area: forecast;
+  margin-top: 16px;
+  margin-right: 16px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.7) transparent;
+}
+
+.forecastItem {
+  display: grid;
+  grid-template-areas:
+    "forecastDateTime forecastStatus"
+    "forecastTemp forecastTemp"
+    "forecastPress forecastWind";
+  gap: 4px;
+  height: fit-content;
+  background-color: var(--widget-color-day);
+  padding: 12px;
+  color: white;
+  border-radius: 16px;
+  font-family: Arial, serif;
+  margin-bottom: 16px;
+}
+
+.forecastDateTime {
+  grid-area: forecastDateTime;
+}
+
+.forecastStatus {
+  grid-area: forecastStatus;
+}
+
+.forecastTemperature {
+  grid-area: forecastTemp;
+}
+
+.forecastPressure {
+  grid-area: forecastPress;
+}
+
+.forecastWind {
+  grid-area: forecastWind;
 }
 
 #attributions {
