@@ -1,5 +1,4 @@
 body {
-  background-color: #e6f1fc;
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 9fr;
@@ -8,19 +7,20 @@ body {
   gap: 10px;
   height: 100vh;
   margin: 0;
+  padding: 16px;
+  box-sizing: border-box;
   background-image: url("assets/sunny.webp");
   background-size: cover;
   background-position: center;
 }
 
 :root {
-  --widget-color-day: rgb(86 160 255 / 0.47)
+  --widget-color-day: rgb(86 160 255 / 0.47);
+  --mobile-bg-color-day: #81b0f1;
 }
 
 #search {
   grid-area: search;
-  margin-top: 16px;
-  margin-left: 16px;
   display: flex;
   height: fit-content;
 }
@@ -62,8 +62,6 @@ body {
   gap: 8px;
   height: fit-content;
   align-self: end;
-  margin-bottom: 16px;
-  margin-left: 16px;
   background-color: var(--widget-color-day);
   padding: 16px;
   color: white;
@@ -101,8 +99,6 @@ body {
 
 #forecastWeather {
   grid-area: forecast;
-  margin-top: 16px;
-  margin-right: 16px;
   overflow-y: auto;
   overflow-x: hidden;
 
@@ -148,4 +144,71 @@ body {
 
 #attributions {
   display: none;
+}
+
+@media screen and (max-width: 950px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0fr;
+    grid-template-areas:
+      "search"
+      "current"
+      "forecast";
+    gap: 10px;
+    height: fit-content;
+    background: var(--mobile-bg-color-day);
+  }
+
+  #forecastWeather {
+    overflow-y: auto;
+    overflow-x: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .forecastItem {
+    grid-template-areas:
+    "forecastStatus forecastStatus"
+    "forecastDateTime forecastDateTime"
+    "forecastTemp forecastTemp"
+    "forecastPress forecastWind";
+    gap: 4px;
+    height: fit-content;
+    padding: 12px;
+    margin-bottom: 0;
+  }
+
+  .forecastStatusText {
+    display: none;
+  }
+
+  .forecastStatus {
+    font-size: 32px;
+  }
+
+  .forecastDateTime, .forecastStatus, .forecastTemperature, .forecastPressure, .forecastWind {
+    text-align: center;
+  }
+
+  .forecastTemperatureValue {
+    font-size: 32px
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .forecastItem {
+    grid-template-areas:
+    "forecastStatus"
+    "forecastDateTime"
+    "forecastTemp"
+    "forecastPress"
+    "forecastWind";
+  }
+
+  .forecastFeelsLikeText {
+    display: none;
+  }
 }
