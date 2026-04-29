@@ -1,6 +1,6 @@
 body {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 2fr;
   grid-template-rows: 1fr 9fr;
   grid-template-areas: "search forecast"
                        "current forecast";
@@ -9,14 +9,16 @@ body {
   margin: 0;
   padding: 16px;
   box-sizing: border-box;
-  background-image: url("assets/sunny.webp");
-  background-size: cover;
-  background-position: center;
+  background: var(--current-bg-color);
 }
 
 :root {
-  --widget-color-day: rgb(86 160 255 / 0.47);
-  --mobile-bg-color-day: #81b0f1;
+  --widget-color-day: rgb(64 133 223 / 0.47);
+  --widget-color-night: rgb(28 66 114 / 0.47);
+  --current-widget-color: var(--widget-color-day);
+  --bg-color-day: #81b0f1;
+  --bg-colot-night: #112f5d;
+  --current-bg-color: var(--bg-color-day);
 }
 
 #search {
@@ -62,7 +64,7 @@ body {
   gap: 8px;
   height: fit-content;
   align-self: end;
-  background-color: var(--widget-color-day);
+  background-color: var(--current-widget-color);
   padding: 16px;
   color: white;
   border-radius: 24px;
@@ -112,9 +114,10 @@ body {
     "forecastDateTime forecastStatus"
     "forecastTemp forecastTemp"
     "forecastPress forecastWind";
+  grid-template-columns: 50% 50%;
   gap: 4px;
   height: fit-content;
-  background-color: var(--widget-color-day);
+  background-color: var(--current-widget-color);
   padding: 12px;
   color: white;
   border-radius: 16px;
@@ -157,7 +160,7 @@ body {
       "forecast";
     gap: 10px;
     height: fit-content;
-    background: var(--mobile-bg-color-day);
+    background: var(--current-bg-color);
   }
 
   #forecastWeather {
@@ -175,6 +178,7 @@ body {
     "forecastDateTime forecastDateTime"
     "forecastTemp forecastTemp"
     "forecastPress forecastWind";
+    grid-template-columns: 50% 50%;
     gap: 4px;
     height: fit-content;
     padding: 12px;
@@ -206,6 +210,7 @@ body {
     "forecastTemp"
     "forecastPress"
     "forecastWind";
+    grid-template-columns: 100%;
   }
 
   .forecastFeelsLikeText {
