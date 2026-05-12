@@ -2,7 +2,8 @@
 
 use App\Encoder\EncoderInterface;
 
-class CsvEncoder implements EncoderInterface {
+class SsvEncoder implements EncoderInterface {
+
     /**
      * @inheritDoc
      */
@@ -13,11 +14,11 @@ class CsvEncoder implements EncoderInterface {
             return [];
         }
 
-        $header = str_getcsv(array_shift($lines), ",", '"', "");
+        $header = str_getcsv(array_shift($lines), ";", '"', "");
         $result = [];
 
         foreach ($lines as $line) {
-            $values = str_getcsv($line, ",", '"', "");
+            $values = str_getcsv($line, ";", '"', "");
             $row = array_combine($header, $values);
             if ($row) {
                 $result[] = $row;
@@ -36,14 +37,14 @@ class CsvEncoder implements EncoderInterface {
         $header = array_keys($data[0]);
         $lines = [];
 
-        $lines[] = implode(",", $header);
+        $lines[] = implode(";", $header);
 
         foreach ($data as $row) {
             $values = [];
             foreach ($header as $key) {
                 $values[] = $row[$key] ?? "";
             }
-            $lines[] = implode(",", $values);
+            $lines[] = implode(";", $values);
         }
 
         return implode("\n", $lines);
