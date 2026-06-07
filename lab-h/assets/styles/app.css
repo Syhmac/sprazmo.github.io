@@ -1,3 +1,95 @@
 body {
-    background-color: skyblue;
+    background-color: white;
+    padding: 24px;
+}
+
+.deleteForm {
+    display: inline-block;
+}
+
+.showButtons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.editButtons {
+    display: flex;
+    margin-top: 12px;
+}
+
+.link-btn, .btn {
+    display: inline-block;
+    background-color: #222222;
+    padding: 8px 12px;
+    color: white;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-btn:hover, .btn:hover {
+    color: white;
+}
+
+.btn-blue {
+    background-color: #3b82f6;
+}
+
+.btn-blue:hover {
+    background-color: #194599;
+}
+
+.btn-blue:active {
+    background-color: #092d74;
+}
+
+.btn-red {
+    background-color: #cc3333;
+}
+
+.btn-red:hover {
+    background-color: #991919;
+}
+
+.btn-red:active {
+    background-color: #790e0e;
+}
+
+.btn-green {
+    background-color: #33af33;
+}
+
+.btn-green:hover {
+    background-color: #1a841a;
+}
+
+.btn-green:active {
+    background-color: #096409;
+}
+
+.form-label, .form-control {
+    display: inline-block;
+    width: 50%;
+}
+
+.mb-3 {
+    border-bottom: lightgray 1px solid;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    .carName, .carButtons, .indexHeader, .carCreateWrap {
+        text-align: center;
+    }
+
+    .form-label, .form-control {
+        width: 100%;
+    }
+
+    .mb-3 {
+        border-bottom: none;
+    }
 }

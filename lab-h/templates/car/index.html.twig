@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Car index{% endblock %}
+
+{% block body %}
+    <h1 class="indexHeader">Car list</h1>
+    <div class="carElements">
+        {% for car in cars %}
+            <div class="carElement">
+                <h2 class="carName">{{ car.manufacturer }} {{ car.model }} ({{ car.year }})</h2>
+                <div class="carButtons">
+                    <a href="{{ path('app_car_show', {'id': car.id}) }}" class="link-btn btn-blue">Details</a>
+                    <a href="{{ path('app_car_edit', {'id': car.id}) }}" class="link-btn btn-green">Edit</a>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+
+    <div class="carCreateWrap">
+        <a href="{{ path('app_car_new') }}" class="link-btn btn-green">Create new</a>
+    </div>
+{% endblock %}
