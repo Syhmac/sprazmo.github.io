@@ -1,0 +1,14 @@
+<h1>Edit Car <%= car.getManufacturer() %> <%= car.getModel() %> (<%= car.getId() %>)</h1>
+
+<form action="/cars/<%= car.getId() %>/edit" method="post" class="edit-form">
+  <%- include('form') %>
+</form>
+
+<ul class="action-list">
+  <li><a href="/cars">Back to list</a></li>
+  <li>
+    <form action="/cars/<%= car.getId() %>/delete" method="post">
+      <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" />
+    </form>
+  </li>
+</ul>
